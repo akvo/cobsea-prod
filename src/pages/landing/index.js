@@ -373,62 +373,12 @@ const LatestNews = () => {
     const fetchNews = async () => {
       try {
         const response = await fetch(
-          `${apiUrl}/api/posts?populate=cover&sort=id:desc&pagination[limit]=8`
+          `${apiUrl}/api/cobsea-latest-news?populate=cover&sort=id:desc&pagination[limit]=8`
         );
         const data = await response.json();
         setItems(transformStrapiResponse(data.data || data));
       } catch (error) {
         console.error('Error fetching news:', error);
-        setItems([
-          {
-            id: 1,
-            title: 'Marine Conservation Initiative Launched',
-            content:
-              'A new comprehensive marine conservation program has been launched to protect coral reefs and marine biodiversity in the East Asian Seas region.',
-            slug: 'marine-conservation-initiative',
-            cover: {
-              data: {
-                attributes: { formats: { medium: { url: '/news-1.jpg' } } },
-              },
-            },
-          },
-          {
-            id: 2,
-            title: 'Plastic Pollution Research Update',
-            content:
-              'Recent research reveals significant progress in understanding microplastic distribution patterns across Southeast Asian coastal waters.',
-            slug: 'plastic-pollution-research-update',
-            cover: {
-              data: {
-                attributes: { formats: { medium: { url: '/news-2.jpg' } } },
-              },
-            },
-          },
-          {
-            id: 3,
-            title: 'Regional Partnership Summit 2025',
-            content:
-              'The annual COBSEA partnership summit brings together stakeholders from nine countries to discuss marine litter action plans.',
-            slug: 'regional-partnership-summit-2025',
-            cover: {
-              data: {
-                attributes: { formats: { medium: { url: '/news-3.jpg' } } },
-              },
-            },
-          },
-          {
-            id: 4,
-            title: 'New Data Dashboard Released',
-            content:
-              'Interactive country dashboard now available providing real-time insights into plastic flows and marine pollution indicators.',
-            slug: 'new-data-dashboard-released',
-            cover: {
-              data: {
-                attributes: { formats: { medium: { url: '/news-4.jpg' } } },
-              },
-            },
-          },
-        ]);
       } finally {
         setLoading(false);
       }
