@@ -308,5 +308,6 @@ export const getApiUrl = () => {
 export function getStrapiUrl() {
   const domains =
     process.env.REACT_APP_API_URL || 'https://unep-gpml.akvotest.org/';
+
   return `${domains}strapi`;
 }
