@@ -1,8 +1,11 @@
 import axios from 'axios';
 import humps from 'humps';
+import { getApiUrl } from './misc';
+
+const apiURL = getApiUrl();
 
 export const config = {
-  baseURL: 'https://globalplasticshub.org/api',
+  baseURL: apiURL,
   headers: {
     'Content-Type': 'application/json',
   },

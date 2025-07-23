@@ -284,12 +284,6 @@ export function transformStrapiResponse(value) {
   });
 }
 
-export const getApiUrl = () => {
-  return (
-    process.env.REACT_APP_API_URL || 'https://unep-gpml.akvotest.org/strapi'
-  );
-};
-
 export const lifecycleStageTags = [
   'Production',
   'Consumption',
@@ -305,14 +299,14 @@ export const pagination = {
   },
 };
 
+export const getApiUrl = () => {
+  const domains =
+    process.env.REACT_APP_API_URL || 'https://unep-gpml.akvotest.org/';
+  return `https://${domains}api`;
+};
+
 export function getStrapiUrl() {
-  let $env = process.env.NODE_ENV || 'test';
-  const domains = {
-    test: 'unep-gpml.akvotest.org',
-    development: 'unep-gpml.akvotest.org',
-    staging: 'unep-gpml.akvotest.org',
-    prod: 'globalplasticshub.org',
-    production: 'globalplasticshub.org',
-  };
-  return `https://${domains[$env]}/strapi`;
+  const domains =
+    process.env.REACT_APP_API_URL || 'https://unep-gpml.akvotest.org/';
+  return `https://${domains}strapi`;
 }
