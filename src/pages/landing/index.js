@@ -19,6 +19,7 @@ import { transformStrapiResponse } from 'utils/misc';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 import { ArrowRightOutlined } from '@ant-design/icons';
+import { getStrapiUrl } from 'utils/misc';
 
 const Home = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -356,7 +357,7 @@ const LatestNews = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  const apiUrl = getApiUrl();
+  const apiUrl = getStrapiUrl();
 
   useEffect(() => {
     const handleResize = () => {
