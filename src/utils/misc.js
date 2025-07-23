@@ -302,11 +302,11 @@ export const pagination = {
 export const getApiUrl = () => {
   const domains =
     process.env.REACT_APP_API_URL || 'https://unep-gpml.akvotest.org/';
-  return `https://${domains}api`;
+  return `${domains}api`;
 };
 
 export function getStrapiUrl() {
   const domains =
     process.env.REACT_APP_API_URL || 'https://unep-gpml.akvotest.org/';
-  return `https://${domains}strapi`;
+  return `${domains}strapi`;
 }
