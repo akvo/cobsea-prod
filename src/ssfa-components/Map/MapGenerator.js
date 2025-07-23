@@ -1,25 +1,25 @@
 // import for d3 tools
-import React, { useEffect } from "react";
-import { geoPath, geoConicEqualArea } from "d3-geo";
-import * as d3 from "d3";
-import ReactTooltip from "react-tooltip";
-import { useSelector } from "react-redux";
-import { IconButton, Box } from "@mui/material";
+import React, { useEffect } from 'react';
+import { geoPath, geoConicEqualArea } from 'd3-geo';
+import * as d3 from 'd3';
+import ReactTooltip from 'react-tooltip';
+import { useSelector } from 'react-redux';
+import { IconButton, Box } from '@mui/material';
 
-import ZoomOutMapIcon from "@mui/icons-material/ZoomOutMap";
+import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap';
 
-import data from "data/geo.json";
-import useWindowDimensions from "ssfa-components/utils/useWindowDimensions";
-import { getFromStorage } from "ssfa-components/utils/utils";
+import data from 'data/geo.json';
+import useWindowDimensions from 'ssfa-components/utils/useWindowDimensions';
+import { getFromStorage } from 'ssfa-components/utils/utils';
 
 function locationFormatter(input) {
   switch (input) {
-    case "Brunei Darussalam":
-      return "Brunei";
-    case "RO Korea":
-      return "South Korea";
+    case 'Brunei Darussalam':
+      return 'Brunei';
+    case 'RO Korea':
+      return 'South Korea';
     default:
-      return input.trim() ?? "NA";
+      return input.trim() ?? 'NA';
   }
 }
 
@@ -32,44 +32,44 @@ function researchTypeCounter(original_val, researchType) {
 
 function socioTypeCounter(original_val, socioType) {
   original_val.legal =
-    socioType.legal === "Yes" ? original_val.legal + 1 : original_val.legal;
+    socioType.legal === 'Yes' ? original_val.legal + 1 : original_val.legal;
   original_val.cultural =
-    socioType.cultural === "Yes"
+    socioType.cultural === 'Yes'
       ? original_val.cultural + 1
       : original_val.cultural;
   original_val.economic =
-    socioType.economic === "Yes"
+    socioType.economic === 'Yes'
       ? original_val.economic + 1
       : original_val.economic;
   original_val.policy =
-    socioType.policy === "Yes" ? original_val.policy + 1 : original_val.policy;
+    socioType.policy === 'Yes' ? original_val.policy + 1 : original_val.policy;
   return original_val;
 }
 
 function workLocationCounter(original_val, workLocation) {
-  original_val.laboratory = workLocation.includes("Laboratory")
+  original_val.laboratory = workLocation.includes('Laboratory')
     ? original_val.laboratory + 1
     : original_val.laboratory;
-  original_val.desktop = workLocation.includes("Desktop")
+  original_val.desktop = workLocation.includes('Desktop')
     ? original_val.desktop + 1
     : original_val.desktop;
   return original_val;
 }
 
 function plasticSizeCounter(original_val, plasticSize) {
-  original_val.macroplastic = plasticSize.includes("Macroplastic")
+  original_val.macroplastic = plasticSize.includes('Macroplastic')
     ? original_val.macroplastic + 1
     : original_val.macroplastic;
-  original_val.microplastic = plasticSize.includes("Microplastic")
+  original_val.microplastic = plasticSize.includes('Microplastic')
     ? original_val.microplastic + 1
     : original_val.microplastic;
   return original_val;
 }
 
 function getInfo() {
-  const data = getFromStorage("data");
-  const position = getFromStorage("position");
-  const rows = data.data.table.rows;
+  const data = getFromStorage('data');
+  const position = getFromStorage('position');
+  const rows = data?.data?.table.rows;
 
   let officialName = {};
   let pubNum = {};
@@ -81,20 +81,20 @@ function getInfo() {
   let fishingGearCount = {};
 
   rows.forEach((row) => {
-    const name_list = row.c[position["Location/Territory studied"]]?.v
+    const name_list = row.c[position['Location/Territory studied']]?.v
       .trim()
-      .split(new RegExp("[,;]", "g"));
-    const researchType = row.c[position["Sci/Humanities"]]?.v.trim();
+      .split(new RegExp('[,;]', 'g'));
+    const researchType = row.c[position['Sci/Humanities']]?.v.trim();
     const socioType = {
-      legal: row.c[position["Legal/Regulatory Study"]]?.v.trim(),
-      cultural: row.c[position["Social/Cultural Study"]]?.v.trim(),
-      economic: row.c[position["Economic/Management Study"]]?.v.trim(),
-      policy: row.c[position["Policy Study"]]?.v.trim(),
+      legal: row.c[position['Legal/Regulatory Study']]?.v.trim(),
+      cultural: row.c[position['Social/Cultural Study']]?.v.trim(),
+      economic: row.c[position['Economic/Management Study']]?.v.trim(),
+      policy: row.c[position['Policy Study']]?.v.trim(),
     };
-    const workLocation = row.c[position["Location of Work"]]?.v.trim();
-    const fieldSampling = row.c[position["Field Sampling_Conducted"]]?.v.trim();
-    const plasticSize = row.c[position["Plastic Sizes Examined"]]?.v.trim();
-    const fishingGear = row.c[position["Fishing Gear Examined"]]?.v.trim();
+    const workLocation = row.c[position['Location of Work']]?.v.trim();
+    const fieldSampling = row.c[position['Field Sampling_Conducted']]?.v.trim();
+    const plasticSize = row.c[position['Plastic Sizes Examined']]?.v.trim();
+    const fishingGear = row.c[position['Fishing Gear Examined']]?.v.trim();
 
     name_list?.forEach((country) => {
       const name = locationFormatter(country.trim());
@@ -118,10 +118,10 @@ function getInfo() {
         workLocation
       );
       fieldSamplingCount[name] = fieldSamplingCount[name]
-        ? fieldSampling === "Yes"
+        ? fieldSampling === 'Yes'
           ? fieldSamplingCount[name] + 1
           : fieldSamplingCount[name]
-        : fieldSampling === "Yes"
+        : fieldSampling === 'Yes'
         ? (fieldSamplingCount[name] = 1)
         : (fieldSamplingCount[name] = 0);
       plasticSizeCount[name] = plasticSizeCounter(
@@ -129,10 +129,10 @@ function getInfo() {
         plasticSize
       );
       fishingGearCount[name] = fishingGearCount[name]
-        ? fishingGear === "Yes"
+        ? fishingGear === 'Yes'
           ? fishingGearCount[name] + 1
           : fishingGearCount[name]
-        : fishingGear === "Yes"
+        : fishingGear === 'Yes'
         ? (fishingGearCount[name] = 1)
         : (fishingGearCount[name] = 0);
     });
@@ -155,7 +155,7 @@ const Tooltip = (dataTip, mapInfo) => {
     <div>
       {mapInfo ? (
         <>
-          <p style={{ fontSize: "18px" }}>{mapInfo.officialName[dataTip]}</p>
+          <p style={{ fontSize: '18px' }}>{mapInfo.officialName[dataTip]}</p>
           <br />
           <p>Total number of publications ({mapInfo.pubNum[dataTip]})</p>
           <ul style={{ marginLeft: 40 }}>
@@ -212,7 +212,7 @@ export default function MapGenerator() {
   //Map generation
   useEffect(() => {
     let width = containerRef.current?.offsetWidth;
-    d3.select("#map").selectChildren().remove();
+    d3.select('#map').selectChildren().remove();
 
     // Projection generation
     const projection = geoConicEqualArea()
@@ -234,15 +234,15 @@ export default function MapGenerator() {
         [0, 0],
         [width, height],
       ])
-      .on("zoom", (event) => {
-        d3.select("g").attr("transform", event.transform);
+      .on('zoom', (event) => {
+        d3.select('g').attr('transform', event.transform);
       });
 
     const clicked = (event, d) => {
       const [[x0, y0], [x1, y1]] = path.bounds(d);
       event.stopPropagation();
-      g.transition().style("fill", null);
-      d3.select(this).transition().style("fill", null);
+      g.transition().style('fill', null);
+      d3.select(this).transition().style('fill', null);
       svg
         .transition()
         .duration(750)
@@ -259,29 +259,29 @@ export default function MapGenerator() {
     };
 
     const svg = d3
-      .select("#map")
-      .append("svg")
-      .attr("width", width)
-      .attr("height", height)
+      .select('#map')
+      .append('svg')
+      .attr('width', width)
+      .attr('height', height)
       .call(zoomBehavior);
 
-    const g = svg.append("g").attr("fill", "#c8a464");
+    const g = svg.append('g').attr('fill', '#c8a464');
 
-    g.selectAll("path")
+    g.selectAll('path')
       .data(data.features, (feature) => {
         return feature;
       })
       .enter()
-      .append("path")
-      .attr("id", (feature) => feature.properties.sovereignt)
-      .attr("data-for", "Tooltip")
-      .attr("data-tip", (feature) => feature.properties.sovereignt)
-      .attr("data-event", "click focus")
-      .attr("style", "outline: none !important;")
-      .attr("d", path)
-      .attr("stroke", "white")
-      .attr("stroke-width", 0.1)
-      .on("click", clicked);
+      .append('path')
+      .attr('id', (feature) => feature.properties.sovereignt)
+      .attr('data-for', 'Tooltip')
+      .attr('data-tip', (feature) => feature.properties.sovereignt)
+      .attr('data-event', 'click focus')
+      .attr('style', 'outline: none !important;')
+      .attr('d', path)
+      .attr('stroke', 'white')
+      .attr('stroke-width', 0.1)
+      .on('click', clicked);
 
     function reset() {
       svg
@@ -294,7 +294,7 @@ export default function MapGenerator() {
         );
     }
 
-    d3.select("#re-center").on("click", reset);
+    d3.select('#re-center').on('click', reset);
 
     ReactTooltip.rebuild();
   }, [height, containerRef.current?.offsetWidth]);
@@ -305,9 +305,9 @@ export default function MapGenerator() {
         id="MapContainer"
         ref={containerRef}
         style={{
-          border: "1px solid #475657",
-          overflow: "auto",
-          boxSizing: "border-box",
+          border: '1px solid #475657',
+          overflow: 'auto',
+          boxSizing: 'border-box',
         }}
       >
         <div id="map"></div>
@@ -316,16 +316,16 @@ export default function MapGenerator() {
           border={false}
           offset={{ top: 20 }}
           delayUpdate={200}
-          place={"top"}
+          place={'top'}
           globalEventOff="click"
           getContent={(dataTip) => Tooltip(dataTip, mapInfo)}
         />
-        <Box style={{ textAlign: "center" }}>
+        <Box style={{ textAlign: 'center' }}>
           <IconButton
             size="small"
             color="inherit"
             id="re-center"
-            style={{ margin: "0 auto", display: "flex" }}
+            style={{ margin: '0 auto', display: 'flex' }}
           >
             <ZoomOutMapIcon />
           </IconButton>
