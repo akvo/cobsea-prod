@@ -1,0 +1,75 @@
+@import '../../vars.scss';
+
+.page {
+    padding: 40px 150px;
+    margin-top: 110px;
+    font-family: var(--font-archia), sans-serif;
+
+    .container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .post-loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 400px;
+        margin-top: 110px;
+    }
+
+    h1 {
+        font-weight: 700;
+    }
+
+    &> :global(.container) {
+        max-width: 640px;
+    }
+
+    h1 {
+        margin: 10px 0 30px;
+    }
+
+    .cover {
+        width: 100%;
+        position: relative;
+        margin-bottom: 20px;
+        text-align: center;
+
+        img {
+            object-position: 0 0;
+        }
+    }
+
+    .date {
+        color: #000;
+    }
+
+    .content {
+        min-height: 300px;
+        line-height: 1.7;
+    }
+
+    h3 {
+        font-size: $fzL;
+    }
+
+    h4 {
+        font-size: $fzM;
+    }
+
+    h3,
+    h4 {
+        font-weight: bold;
+    }
+
+    ul {
+        list-style: disc;
+        padding-left: 20px;
+
+        li {
+            margin: 10px 0;
+        }
+    }
+}
