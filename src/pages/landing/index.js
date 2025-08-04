@@ -324,7 +324,7 @@ const FeatureCards = () => {
                     </div>
                   </div>
                 </Link>
-                <Link to="/events" className="feature-item-link">
+                <a href="https://www.unep.org/cobsea/events" target="_blank" className="feature-item-link">
                   <div className="feature-item">
                     <div className="icon">
                       <Events />
@@ -334,7 +334,7 @@ const FeatureCards = () => {
                       <p>Upcoming sector events</p>
                     </div>
                   </div>
-                </Link>
+                </a>
                 <div className="feature-item">
                   <div className="icon">
                     <Network />
