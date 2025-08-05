@@ -73,7 +73,7 @@ const menuList = [
       {
         key: 'Partner Network',
         id: 'Partner Network',
-        to: '/research-network',
+        link: 'https://globalplasticshub.org/community-hub',
       },
     ],
   },
