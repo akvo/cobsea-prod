@@ -323,7 +323,7 @@ const FeatureCards = () => {
                     </div>
                   </div>
                 </a>
-                <a href="https://globalplasticshub.org/community-hub" target="_blank">
+                <a href="https://globalplasticshub.org/community-hub" target="_blank" className="feature-item-link">
                   <div className="feature-item">
                     <div className="icon">
                       <Network />
