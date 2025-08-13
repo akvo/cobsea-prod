@@ -87,28 +87,16 @@ const Home = () => {
             </a>
           </div>
           <div className="col">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://gpmarinelitter.org/"
-            >
-              <img src="/giz.svg" alt="GPML" width={199} />
-            </a>
+            <img src="/giz.svg" alt="GPML" width={199} />
           </div>
           <div className="col">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://gpmarinelitter.org/"
-            >
               <img src="/giz-buv.svg" alt="GPML" width={150} />
-            </a>
           </div>
           <div className="col">
             <a
               target="_blank"
               rel="noreferrer"
-              href="http://www.sea-circular.org/"
+              href="https://www.unep.org/regions/asia-and-pacific/our-projects/sea-circular-project"
             >
               <img src="/sea-circular.svg" alt="SEA Circular" width={115} />
             </a>
@@ -218,7 +206,7 @@ const FeatureCards = () => {
                       <KnowledgeLibrary />
                     </div>
                     <div className="content">
-                      <h6>Knowledge library</h6>
+                      <h6>Knowledge Library</h6>
                       <p>National & regional policies and initiatives</p>
                     </div>
                   </div>
@@ -229,7 +217,7 @@ const FeatureCards = () => {
                       <CaseStudy />
                     </div>
                     <div className="content">
-                      <h6>Case studies</h6>
+                      <h6>Case Studies</h6>
                       <p>A map of good practices</p>
                     </div>
                   </div>
@@ -243,7 +231,7 @@ const FeatureCards = () => {
                       <LearningCenter />
                     </div>
                     <div className="content">
-                      <h6>Learning centre</h6>
+                      <h6>Learning Centre</h6>
                       <p>Learning and capacity-building resources</p>
                     </div>
                   </div>
@@ -270,7 +258,7 @@ const FeatureCards = () => {
                       <Database />
                     </div>
                     <div className="content">
-                      <h6>Research database</h6>
+                      <h6>Research Database</h6>
                       <p>Data sets on plastic pollution and marine litter</p>
                     </div>
                   </div>
@@ -292,7 +280,7 @@ const FeatureCards = () => {
                       <Dashboard />
                     </div>
                     <div className="content">
-                      <h6>Country dashboard</h6>
+                      <h6>Country Dashboard</h6>
                       <p>A snapshot of plastic flows</p>
                     </div>
                   </div>
@@ -319,12 +307,12 @@ const FeatureCards = () => {
                       <Search />
                     </div>
                     <div className="content">
-                      <h6>Research network</h6>
+                      <h6>Research Network</h6>
                       <p>Directory of organizations</p>
                     </div>
                   </div>
                 </Link>
-                <Link to="/events" className="feature-item-link">
+                <a href="https://www.unep.org/cobsea/events" target="_blank" className="feature-item-link">
                   <div className="feature-item">
                     <div className="icon">
                       <Events />
@@ -334,16 +322,18 @@ const FeatureCards = () => {
                       <p>Upcoming sector events</p>
                     </div>
                   </div>
-                </Link>
-                <div className="feature-item">
-                  <div className="icon">
-                    <Network />
+                </a>
+                <a href="https://globalplasticshub.org/community-hub" target="_blank" className="feature-item-link">
+                  <div className="feature-item">
+                    <div className="icon">
+                      <Network />
+                    </div>
+                    <div className="content">
+                      <h6>Partner Network</h6>
+                      <p>Partners collaborating through joint action</p>
+                    </div>
                   </div>
-                  <div className="content">
-                    <h6>Partner network</h6>
-                    <p>Partners collaborating through joint action</p>
-                  </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>

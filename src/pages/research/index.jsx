@@ -52,7 +52,7 @@ let theme = createTheme({
     divider: 'rgba(0, 0, 0, 0.3)',
   },
   typography: {
-    fontFamily: 'Jost',
+    fontFamily: 'DM Sans',
   },
 });
 

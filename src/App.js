@@ -23,6 +23,7 @@ import CapacityBuilding from 'pages/learning-centre';
 import CaseStudy from 'pages/case-study';
 import AboutUs from 'pages/about-us';
 import ContactUs from 'pages/contact-us';
+import PostPage from 'pages/post';
 
 Promise.all([
   api.get('/tag'),
@@ -81,6 +82,7 @@ function App() {
           <Route path="/events" component={Events} />
           <Route path="/about-us" component={AboutUs} />
           <Route path="/contact-us" component={ContactUs} />
+          <Route path="/post/:slug" component={PostPage} />
         </Switch>
       </div>
       <Footer />

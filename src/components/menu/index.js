@@ -3,8 +3,7 @@ import classNames from 'classnames';
 import { Fade as Hamburger } from 'hamburger-react';
 import './style.scss';
 import { useState, useEffect, useRef } from 'react';
-import { Dropdown, Menu, Drawer, Button } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import { Dropdown, Menu, Drawer } from 'antd';
 import { DropdownIcon } from 'components/icons';
 
 const menuList = [
@@ -28,9 +27,9 @@ const menuList = [
       },
       {
         to: '/knowledge/learning-centre',
-        title: 'Learning centre',
-        key: 'Learning centre',
-        id: 'Learning centre',
+        title: 'Learning Centre',
+        key: 'Learning Centre',
+        id: 'Learning Centre',
         subtitle: 'Learning and capacity development resources',
         iconClass: 'learning',
       },
@@ -48,12 +47,12 @@ const menuList = [
       {
         key: 'Maps',
         id: 'Maps',
-        to: '/research/map',
+        link: 'https://globalplasticshub.org/data/maps',
       },
       {
-        key: 'Country dashboard',
-        id: 'Country dashboard',
-        to: '/research/data',
+        key: 'Country Dashboard',
+        id: 'Country Dashboard',
+        link: 'https://globalplasticshub.org/country-dashboard',
       },
     ],
   },
@@ -69,12 +68,12 @@ const menuList = [
       {
         key: 'Events',
         id: 'Events',
-        to: '/events',
+        link: 'https://www.unep.org/cobsea/events',
       },
       {
         key: 'Partner Network',
         id: 'Partner Network',
-        to: '/research-network',
+        link: 'https://globalplasticshub.org/community-hub',
       },
     ],
   },
@@ -129,7 +128,13 @@ const MenuBar = ({ landing }) => {
                 {child.to ? (
                   <Link to={child.to}>{child.key}</Link>
                 ) : (
-                  <a href={child.href}>{child.key}</a>
+                  <a
+                    href={child.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {child.key}
+                  </a>
                 )}
               </Menu.Item>
             ))}
@@ -182,7 +187,17 @@ const MenuBar = ({ landing }) => {
                     <Menu.SubMenu key={item.key} title={item.key}>
                       {item.children.map((child) => (
                         <Menu.Item key={child.id}>
-                          <Link to={child.to}>{child.key}</Link>
+                          {child.to ? (
+                            <Link to={child.to}>{child.key}</Link>
+                          ) : (
+                            <a
+                              href={child.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {child.key}
+                            </a>
+                          )}
                         </Menu.Item>
                       ))}
                     </Menu.SubMenu>
