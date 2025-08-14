@@ -102,7 +102,7 @@ function ResearchNetwork() {
               {data.map((item, index) => (
                 <Card className="profile-details" key={index}>
                   <div type="flex">
-                    <h4>{item.Institution}</h4>
+                    <h4>{item.Name}</h4>
                     <div className="loc meta">
                       <LocPin />
                       <span>
@@ -111,7 +111,7 @@ function ResearchNetwork() {
                     </div>
                     <p>{item['Area of expertise']}</p>
                     <div className="contact meta">
-                      <span>{item.Name}</span>
+                      <span>{item.Institution}</span>
                       <span className="dot">&#183;</span>
                       <a href={`mailto:${item.Contact}`}>
                         <Button type="link" size="small">
